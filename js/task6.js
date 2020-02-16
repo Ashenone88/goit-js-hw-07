@@ -9,18 +9,13 @@
 // Сколько символов должно быть в инпуте, указывается в его атрибуте data-length.
 // Если введено подходящее количество, то outline инпута становится зеленым, если неправильное - красным.
 // Для добавления стилей, используй CSS-классы valid и invalid.
-const inputLength = document.querySelector("#validation-input[data-length]");
-const input = document.querySelector("#validation-input");
-
-input.addEventListener("blur", inputDataSetLenght);
-
-function inputDataSetLenght() {
-  const setLength = Number(input.dataset.length);
-  let enterLenght = input.value.length;
-  if (setLength === enterLenght) {
-    input.classList.add("valid");
-    input.classList.remove("invalid");
-  } else {
-    input.classList.add("invalid");
-  }
-}
+const validation = document.querySelector("#validation-input");
+const length = Number(
+  document.querySelector("#validation-input").dataset.length
+);
+validation.addEventListener("blur", e => {
+  validation.classList.add("invalid");
+  e.currentTarget.value.length === length
+    ? validation.classList.replace("invalid", "valid")
+    : validation.classList.replace("valid", "invalid");
+});
