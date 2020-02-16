@@ -5,13 +5,10 @@
 // <input type="text" placeholder="Ваше имя?" id="name-input" />
 // <h1>Привет, <span id="name-output">незнакомец</span>!</h1>
 
-const input = document.querySelector("#name-input");
+const userInput = document.querySelector("#name-input");
 const output = document.querySelector("#name-output");
 
-input.addEventListener("input", e => {
-  if (input.value) {
-    output.innerHTML = input.value;
-  } else {
-    output.innerHTML = "незнакомец";
-  }
+userInput.addEventListener("input", () => {
+  output.textContent = userInput.value || "незнакомец";
 });
+
